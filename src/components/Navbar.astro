@@ -24,7 +24,9 @@ const { lang = 'bs' as Lang } = Astro.props;
     <a href="#contact" class="nav-cta">{t(lang, 'nav.cta')}</a>
 
     <div class="lang-switch">
+      <span class="lang-divider"></span>
       <a href="/en/" class:list={[{ active: lang === 'en' }]}>EN</a>
+      <span class="lang-sep">|</span>
       <a href="/de/" class:list={[{ active: lang === 'de' }]}>DE</a>
     </div>
   </div>
@@ -127,22 +129,44 @@ const { lang = 'bs' as Lang } = Astro.props;
 
   .lang-switch {
     display: flex;
-    gap: .5rem;
+    gap: .4rem;
     align-items: center;
+    margin-left: 1.2rem;
+  }
+
+  .lang-divider {
+    width: 1px;
+    height: 18px;
+    background: rgba(201, 169, 110, 0.25);
+    margin-right: .4rem;
+  }
+
+  .lang-sep {
+    color: rgba(201, 169, 110, 0.2);
+    font-size: .6rem;
+    user-select: none;
   }
 
   .lang-switch a {
-    font-size: .65rem;
-    letter-spacing: .1em;
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .12em;
     text-decoration: none;
-    color: var(--text-muted);
-    transition: color .3s ease;
-    padding: .2rem .3rem;
+    color: rgba(255, 255, 255, 0.45);
+    transition: all .3s ease;
+    padding: .35rem .55rem;
+    border: 1px solid transparent;
   }
 
-  .lang-switch a:hover,
+  .lang-switch a:hover {
+    color: var(--gold);
+    border-color: rgba(201, 169, 110, 0.25);
+  }
+
   .lang-switch a.active {
     color: var(--gold);
+    border-color: rgba(201, 169, 110, 0.4);
+    background: rgba(201, 169, 110, 0.08);
   }
 
   .mobile-menu-toggle {
@@ -175,7 +199,8 @@ const { lang = 'bs' as Lang } = Astro.props;
   .mobile-only { display: none; }
 
   @media (max-width: 900px) {
-    .nav-cta {
+    .nav-cta,
+    .lang-divider {
       display: none;
     }
 
