@@ -1,0 +1,125 @@
+---
+---
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <a href="#hero" class="footer-logo">
+        <img src="/images/medea%20logo.png" alt="Medea Clinic Logo" class="footer-logo-img" />
+      </a>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/profile.php?id=61579724626132" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/medea_clinic_dentistry" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="copyright">&copy; {new Date().getFullYear()} Medea Clinic. Sva prava zadržana.</p>
+      <div class="footer-credits">
+        Design by <a href="https://webstranica.ba" target="_blank">Webstranica.ba</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding: 6rem 0 3rem;
+    background: #050505;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 3rem;
+  }
+
+  .footer-logo-img {
+    height: 60px;
+    width: auto;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-social a {
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    transition: all 0.3s ease;
+  }
+
+  .footer-social a:hover {
+    background: var(--gold);
+    color: #000;
+    transform: translateY(-5px);
+  }
+
+  .footer-social a svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .copyright {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-credits {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-credits a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+  }
+
+  .footer-credits a:hover {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 600px) {
+    .footer-top {
+      flex-direction: column;
+      gap: 3rem;
+      text-align: center;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+    .footer-logo-img {
+      height: 50px;
+    }
+  }
+</style>

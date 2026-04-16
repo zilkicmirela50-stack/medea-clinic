@@ -1,0 +1,308 @@
+---
+const toWebp = (src: string) => src.replace(/\.(jpg|jpeg|JPG)$/, '.webp');
+// Results data
+const results = [
+  { prije: "/images/prije-1.jpg", poslije: "/images/poslije-1.jpg", label: "Estetska rehabilitacija" },
+  { prije: "/images/prije-2.jpg", poslije: "/images/poslije-2.jpg", label: "Digital Smile Design" },
+  { prije: "/images/prije-3.jpg", poslije: "/images/poslije-3.jpg", label: "Keramičke krune" },
+  { prije: "/images/prije-4.jpg", poslije: "/images/poslije-4.jpg", label: "Totalna transformacija" },
+  { prije: "/images/prije-5.jpg", poslije: "/images/poslije-5.jpg", label: "Hollywood Smile" }
+];
+---
+
+<section id="results" class="results-section">
+  <div class="luxury-bg"></div>
+  
+  <div class="container">
+    <div class="results-header">
+      <div class="reveal">
+        <span class="section-label">Prije i poslije</span>
+        <h2 class="section-title">Naši <em>rezultati</em></h2>
+      </div>
+    </div>
+
+    <div class="results-carousel-container">
+      <div class="swiper resultsSwiper">
+        <div class="swiper-wrapper">
+          {results.map((item, index) => (
+            <div class="swiper-slide">
+              <div class="ba-premium-container">
+                <div class="ba-view" data-ba-view>
+                  
+                  <div class="ba-layer layer-before">
+                    <picture>
+                      <source srcset={toWebp(item.prije)} type="image/webp" />
+                      <img src={item.prije} alt="Prije" />
+                    </picture>
+                    <div class="ba-tag t-before">PRIJE</div>
+                  </div>
+
+                  <div class="ba-layer layer-after" data-after-side>
+                    <picture>
+                      <source srcset={toWebp(item.poslije)} type="image/webp" />
+                      <img src={item.poslije} alt="Poslije" />
+                    </picture>
+                    <div class="ba-tag t-after">POSLIJE</div>
+                  </div>
+
+                  <div class="ba-handle" data-handle>
+                    <div class="ba-line"></div>
+                    <div class="ba-knob">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M18 8L22 12L18 16M6 8L2 12L6 16"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <input type="range" min="0" max="100" value="50" class="ba-slider-input" data-input />
+                </div>
+
+                <div class="ba-details">
+                  <span class="ba-title">{item.label}</span>
+                  <div class="ba-case-counter">PRIMJER {index + 1} OD 5</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="results-pagination">
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPENDENCIES -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" is:inline></script>
+
+<style>
+  .results-section {
+    padding: 10rem 0;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .luxury-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(201, 169, 110, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+    position: relative;
+    z-index: 10;
+  }
+
+  .results-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .results-header .section-label {
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-family: var(--serif);
+    font-weight: 300;
+    color: #fff;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .results-carousel-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .resultsSwiper {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  .ba-premium-container {
+    background: #080808;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+  }
+
+  .ba-view {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .ba-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .layer-before { z-index: 10; }
+  .layer-after { z-index: 20; clip-path: inset(0 0 0 50%); }
+
+  .ba-layer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ba-tag {
+    position: absolute;
+    top: 1.5rem;
+    padding: .6rem 1.4rem;
+    font-size: .6rem;
+    letter-spacing: .2em;
+    font-weight: 700;
+    z-index: 40;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .t-before { left: 1.5rem; }
+  .t-after { right: 1.5rem; border-color: var(--gold); color: var(--gold); }
+
+  .ba-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: var(--gold);
+    z-index: 50;
+    pointer-events: none;
+    box-shadow: 0 0 20px var(--gold);
+  }
+
+  .ba-knob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    background: var(--gold);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    box-shadow: 0 0 40px rgba(0,0,0,0.8);
+  }
+
+  .ba-knob svg { width: 22px; height: 22px; }
+
+  .ba-slider-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: ew-resize;
+    z-index: 100;
+  }
+
+  .ba-details {
+    padding: 1.5rem 0.5rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ba-title { font-family: var(--serif); font-size: 1.3rem; font-style: italic; color: var(--gold); }
+  .ba-case-counter { font-size: .6rem; letter-spacing: .2em; color: rgba(255,255,255,0.3); }
+
+  .results-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  :global(.swiper-pagination-bullet) {
+    background: var(--gold) !important;
+    opacity: 0.15 !important;
+    margin: 0 10px !important;
+    width: 8px !important;
+    height: 8px !important;
+    transition: all 0.3s ease !important;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    opacity: 1 !important;
+    transform: scale(1.4);
+  }
+
+  @media (max-width: 600px) {
+    .ba-details { flex-direction: column; gap: 0.8rem; text-align: center; }
+    .results-header { margin-bottom: 3rem; }
+  }
+</style>
+
+<script is:inline>
+  function initResultsSection() {
+    const swiperEl = document.querySelector('.resultsSwiper');
+    if (!swiperEl) return;
+
+    // Destroy existing if any
+    if (swiperEl.swiper) swiperEl.swiper.destroy();
+
+    const swiper = new Swiper('.resultsSwiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      }
+    });
+
+    const views = document.querySelectorAll('[data-ba-view]');
+    views.forEach(view => {
+      const input = view.querySelector('[data-input]');
+      const after = view.querySelector('[data-after-side]');
+      const handle = view.querySelector('[data-handle]');
+
+      const sync = () => {
+        const val = input.value;
+        after.style.clipPath = `inset(0 0 0 ${val}%)`;
+        handle.style.left = `${val}%`;
+      };
+
+      // ROBUST PAUSE LOGIC
+      const pause = () => { if (swiper.autoplay) swiper.autoplay.stop(); };
+      const resume = () => { if (swiper.autoplay) swiper.autoplay.start(); };
+
+      input.addEventListener('pointerdown', pause);
+      input.addEventListener('input', () => { pause(); sync(); });
+      input.addEventListener('pointerup', resume);
+      input.addEventListener('pointerleave', resume);
+
+      sync();
+    });
+  }
+
+  document.addEventListener('astro:page-load', initResultsSection);
+  if (window.Swiper) initResultsSection();
+</script>

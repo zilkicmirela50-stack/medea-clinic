@@ -1,0 +1,202 @@
+---
+const reasons = [
+  {
+    title: "Doživotna garancija",
+    desc: "Koristimo isključivo implantate renomiranih svjetskih proizvođača sa pisanom garancijom.",
+    // Štit sa kvačicom
+    icon: `<path d="M10 2 L16.5 4.5 V10 Q16.5 14.5 10 17.5 Q3.5 14.5 3.5 10 V4.5 Z" stroke-linejoin="round"/><path d="M7 10 L9 12 L13 8" stroke-linecap="round" stroke-linejoin="round"/>`
+  },
+  {
+    title: "Kompletan zahvat u 24h",
+    desc: "Od prvog pregleda do privremenog rada za All-on-4 — sve u jednom danu.",
+    // Munja – brzina
+    icon: `<path d="M11.5 2 L4.5 11 H9 L8 18 L15.5 9 H11 Z" stroke-linejoin="round" stroke-linecap="round"/>`
+  },
+  {
+    title: "Besplatne konsultacije",
+    desc: "Svaki pacijent dobija besplatne konsultacije i transparentan plan tretmana.",
+    // Govorni oblačić sa srcem
+    icon: `<path d="M3 4 H17 V13 H11 L7 16.5 V13 H3 Z" stroke-linejoin="round"/><path d="M10 11 C8.3 10 7.3 9 7.3 8 C7.3 7 8.3 6.6 9 7.2 L10 8.1 L11 7.2 C11.7 6.6 12.7 7 12.7 8 C12.7 9 11.7 10 10 11 Z" fill="currentColor" stroke="none"/>`
+  },
+  {
+    title: "Specijalista oralne hirurgije",
+    desc: "Svi hirurški zahvati obavljaju se isključivo od strane certificiranih specijalista.",
+    // Medal/značka sa medicinskim krstom
+    icon: `<circle cx="10" cy="8" r="5.5"/><path d="M10 5.5 V10.5 M7.5 8 H12.5" stroke-linecap="round"/><path d="M6.5 12.5 L5.5 18 L10 16 L14.5 18 L13.5 12.5" stroke-linejoin="round"/>`
+  },
+  {
+    title: "4 savremene ordinacije",
+    desc: "Dizajnirane po najvišim standardima za efikasnu i komfornu uslugu.",
+    // Grid od 4 prostorije
+    icon: `<rect x="2.5" y="2.5" width="6.5" height="6.5"/><rect x="11" y="2.5" width="6.5" height="6.5"/><rect x="2.5" y="11" width="6.5" height="6.5"/><rect x="11" y="11" width="6.5" height="6.5"/>`
+  },
+  {
+    title: "Individualan pristup",
+    desc: "Svaki osmijeh je jedinstven. Svaki pacijent dobija personalizovani plan.",
+    // Osoba + zvjezdica (jedinstven)
+    icon: `<circle cx="9" cy="7" r="3"/><path d="M3 17 C3 13.5 5.5 11.5 9 11.5 C12.5 11.5 15 13.5 15 17"/><path d="M16 3.5 L16.7 5 L18 5.7 L16.7 6.4 L16 8 L15.3 6.4 L14 5.7 L15.3 5 Z" fill="currentColor" stroke="none"/>`
+  },
+  {
+    title: "Bezbolni zahvati",
+    desc: "Korištenje sedacije i najmodernijih anestetika za potpuno bezbolno iskustvo.",
+    // Mjesec – sedacija / miran san
+    icon: `<path d="M16.5 11 A7 7 0 1 1 9 3.5 A5 5 0 0 0 16.5 11 Z" stroke-linejoin="round"/><path d="M14.5 4 L15.2 5.3 L16.5 6 L15.2 6.7 L14.5 8 L13.8 6.7 L12.5 6 L13.8 5.3 Z" fill="currentColor" stroke="none"/>`
+  },
+  {
+    title: "Digitalna radiologija",
+    desc: "Najsavremenija dijagnostika i 3D snimanje zuba direktno u klinici.",
+    // Rendgen ekran sa zubom
+    icon: `<rect x="2" y="3" width="16" height="12" rx="1"/><path d="M7 7.5 C7 6.5 7.7 6 8.5 6.3 C9.2 6 10.8 6 11.5 6.3 C12.3 6 13 6.5 13 7.5 C13 9 12.6 10.5 12.2 11.5 L11.5 13 L10.8 10.5 H9.2 L8.5 13 L7.8 11.5 C7.4 10.5 7 9 7 7.5 Z" stroke-linejoin="round"/><path d="M6 17.5 H14" stroke-linecap="round"/>`
+  },
+  {
+    title: "Vrhunski materijali",
+    desc: "Koristimo isključivo materijale visokog kvaliteta iz Njemačke i Švicarske.",
+    // Dijamant
+    icon: `<path d="M5.5 3 H14.5 L18 8 L10 17.5 L2 8 Z" stroke-linejoin="round"/><path d="M5.5 3 L8 8 H2 M14.5 3 L12 8 H18 M8 8 L10 17.5 L12 8 M8 8 H12"/>`
+  }
+];
+---
+
+<section id="why">
+  <div class="container">
+    <div class="why-header">
+      <div class="reveal">
+        <span class="section-label">Zašto mi</span>
+        <h2 class="section-title">Vaš osmijeh <em>naša je strast</em></h2>
+        <p class="section-desc">
+          Specijalizovani smo za kompleksne slučajeve — tamo gdje drugi staju, MEDEA CLINIC stvara Hollywood osmijeh. Dokazana stručnost i vrhunska tehnologija čine nas prvim izborom na Ilidži.
+        </p>
+      </div>
+    </div>
+
+    <div class="why-cards">
+      {reasons.map((reason, index) => (
+        <div class={`why-card reveal reveal-delay-${index % 3}`}>
+          <div class="why-card-icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" set:html={reason.icon}></svg>
+          </div>
+          <div class="why-card-text">
+            <h3 class="why-card-title">{reason.title}</h3>
+            <p class="why-card-desc">{reason.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="why-footer reveal">
+      <a href="#contact" class="btn-primary">Rezerviši termin</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  #why {
+    padding: 10rem 0;
+    background: #050505;
+  }
+
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+
+  .why-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 6rem;
+  }
+
+  .why-header .section-label {
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-family: var(--serif);
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-desc {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+
+  .why-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .why-card {
+    background: #0a0a0a;
+    padding: 3rem 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: all 0.4s ease;
+    text-align: center;
+  }
+
+  .why-card:hover {
+    background: #0f0f0f;
+    border-color: rgba(201, 169, 110, 0.2);
+    transform: translateY(-5px);
+  }
+
+  .why-card-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--gold);
+    margin: 0 auto 2rem;
+  }
+
+  .why-card-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .why-card-title {
+    font-size: 1.25rem;
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    font-family: var(--serif);
+  }
+
+  .why-card-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .why-footer {
+    text-align: center;
+    margin-top: 5rem;
+  }
+
+  @media (max-width: 1000px) {
+    .why-cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .why-header {
+      margin-bottom: 3rem;
+    }
+    .why-cards {
+      grid-template-columns: 1fr;
+    }
+    .why-card {
+      padding: 2.5rem 1.5rem;
+    }
+    .why-footer {
+      margin-top: 3rem;
+    }
+  }
+</style>

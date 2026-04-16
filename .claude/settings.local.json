@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(node -e \"require\\('sharp'\\); console.log\\('sharp ok'\\)\")",
+      "Bash(cwebp -version)",
+      "Bash(dir /b *.jpg *.jpeg *.JPG *.png)",
+      "Bash(findstr /v \"^$\")",
+      "Bash(node -e ':*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321)",
+      "WebSearch",
+      "WebFetch(domain:www.facebook.com)",
+      "WebFetch(domain:www.google.com)"
+    ]
+  }
+}

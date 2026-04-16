@@ -1,0 +1,354 @@
+---
+---
+<section id="contact">
+  <div class="container">
+    <div class="contact-header">
+      <p class="section-label reveal">Kontakt</p>
+      <h2 class="section-title reveal">Pronađite <em>nas</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="contact-intro reveal">
+          Naš tim vam stoji na raspolaganju za sve upite, besplatne konsultacije i zakazivanje termina. Javite nam se putem telefona, poruke ili nas posjetite u našoj klinici na Ilidži.
+        </p>
+        <div class="info-items">
+          <div class="info-item reveal reveal-delay-1">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <div class="text">
+              <p class="label">Telefon</p>
+              <a href="tel:061828888" class="value">061 828 888</a>
+            </div>
+          </div>
+
+          <div class="info-item reveal reveal-delay-2">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="text">
+              <p class="label">Adresa</p>
+              <p class="value">Butmirska cesta 31A, Ilidža</p>
+            </div>
+          </div>
+
+          <div class="info-item reveal reveal-delay-3">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </div>
+            <div class="text">
+              <p class="label">Instagram</p>
+              <a href="https://www.instagram.com/medea_clinic_dentistry" target="_blank" class="value">@medea_clinic</a>
+            </div>
+          </div>
+
+          <div class="info-item reveal reveal-delay-3">
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+              </svg>
+            </div>
+            <div class="text">
+              <p class="label">Facebook</p>
+              <a href="https://www.facebook.com/profile.php?id=61579724626132" target="_blank" class="value">Medea Clinic</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Maps -->
+        <div class="map-wrapper reveal reveal-delay-4">
+          <iframe
+            src="https://maps.google.com/maps?q=Butmirska+cesta+31A,+Ilid%C5%BEa,+Bosnia+and+Herzegovina&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Medea Clinic lokacija na mapi"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="contact-form-wrapper reveal">
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Ime i Prezime</label>
+              <input type="text" id="name" name="name" placeholder="Vaše ime" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefon</label>
+              <input type="tel" id="phone" name="phone" placeholder="Vaš broj" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">Usluga</label>
+            <select id="service" name="service">
+              <option value="Hollywood Smile">Hollywood Smile</option>
+              <option value="Dentalni implantati">Dentalni implantati</option>
+              <option value="All-on-4 Proteza">All-on-4 Proteza</option>
+              <option value="3Shape TRIOS 6">3Shape TRIOS 6</option>
+              <option value="Ostalo">Ostalo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Poruka</label>
+            <textarea id="message" name="message" placeholder="Kako vam možemo pomoći?"></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Pošalji poruku</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #contact {
+    padding: 10rem 0;
+    background: var(--dark);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+
+  .contact-header {
+    text-align: center;
+    margin-bottom: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-header .section-label {
+    justify-content: center;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 8rem;
+    align-items: center;
+  }
+
+  .contact-intro {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: 3rem;
+    max-width: 480px;
+  }
+
+  .info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .info-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .info-item .icon {
+    width: 50px;
+    height: 50px;
+    background: var(--dark2);
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    transition: all 0.3s ease;
+  }
+
+  .info-item:hover .icon {
+    background: var(--gold);
+    color: var(--black);
+    transform: scale(1.1);
+  }
+
+  .info-item .icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .info-item .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .info-item .value {
+    font-size: 1.2rem;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .info-item .value:hover {
+    color: var(--gold);
+  }
+
+  /* Google Maps */
+  .map-wrapper {
+    margin-top: 3rem;
+    height: 280px;
+    border: 1px solid rgba(201, 169, 110, 0.15);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .map-wrapper iframe {
+    display: block;
+    filter: grayscale(1) invert(1) contrast(.85) brightness(.7) sepia(.3) hue-rotate(180deg);
+    transition: filter .4s ease;
+  }
+
+  .map-wrapper:hover iframe {
+    filter: grayscale(.3) invert(1) contrast(.85) brightness(.75) sepia(.2) hue-rotate(180deg);
+  }
+
+  .contact-form-wrapper {
+    background: var(--dark2);
+    padding: 4rem;
+    border: 1px solid rgba(201, 169, 110, 0.1);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .form-group label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--dark3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1rem 1.5rem;
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: var(--dark4);
+  }
+
+  .form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .contact-form .btn-primary {
+    width: 100%;
+    margin-top: 1rem;
+    cursor: pointer;
+    border: none;
+  }
+
+  .form-status {
+    min-height: 1.2rem;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-top: 0.5rem;
+  }
+
+  .form-status.error {
+    color: #e07575;
+  }
+
+  @media (max-width: 1100px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+    .contact-header {
+      margin-bottom: 4rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .contact-header {
+      margin-bottom: 3rem;
+    }
+    .contact-grid {
+      gap: 3rem;
+    }
+    .contact-form-wrapper {
+      padding: 2rem 1.2rem;
+    }
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // TODO: zamijeniti s pravim endpointom ili mailto kad klijent da e-mail
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
+  const status = document.getElementById('formStatus');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!status) return;
+
+    const name = (form.elements.namedItem('name') as HTMLInputElement)?.value.trim();
+    const phone = (form.elements.namedItem('phone') as HTMLInputElement)?.value.trim();
+
+    if (!name || !phone) {
+      status.textContent = 'Molimo unesite ime i broj telefona.';
+      status.classList.add('error');
+      return;
+    }
+
+    // Privremeno: logujemo podatke i pokazujemo potvrdu. Zamijeniti pravim slanjem.
+    const data = Object.fromEntries(new FormData(form).entries());
+    console.log('[contact-form]', data);
+
+    status.classList.remove('error');
+    status.textContent = 'Hvala! Poruka je zabilježena. Javićemo vam se uskoro.';
+    form.reset();
+  });
+</script>

@@ -1,0 +1,209 @@
+---
+const services = [
+  {
+    num: "01",
+    title: "Hollywood Smile",
+    desc: "Tehnika brušenja na stepenik za maksimalnu preciznost, dugotrajnost i savršenu estetiku. Zajedno kreiramo osmijeh koji ostavlja utisak.",
+    tag: "Estetska stomatologija",
+    icon: `<path d="M8 20 Q22 34 36 20" stroke-linecap="round"/><rect x="12" y="17" width="5.5" height="7.5" rx="1.2"/><rect x="19.25" y="17.5" width="5.5" height="8" rx="1.2"/><rect x="26.5" y="17" width="5.5" height="7.5" rx="1.2"/><path d="M35 7 l1.1 2.4 2.4 1.1 -2.4 1.1 -1.1 2.4 -1.1 -2.4 -2.4 -1.1 2.4 -1.1z" fill="currentColor" stroke="none"/>`
+  },
+  {
+    num: "02",
+    title: "Dentalni implantati",
+    desc: "BTI implantati najvišeg kvaliteta sa doživotnom garancijom. Zahvat u lokalnoj anesteziji isključivo od strane specijaliste oralne hirurgije.",
+    tag: "Oralna hirurgija",
+    icon: `<path d="M15 6 Q22 2 29 6 L27 14 H17 Z" stroke-linejoin="round"/><path d="M18 14 H26 L25 18 H19 Z"/><path d="M19 18 L22 38 L25 18"/><path d="M19.5 22 H24.5 M19.8 26 H24.2 M20.2 30 H23.8 M20.6 34 H23.4"/>`
+  },
+  {
+    num: "03",
+    title: "All-on-4 Proteza",
+    desc: "Kompletna rekonstrukcija vilice na 4 BTI implantata. PRF augmentacija, privremeni rad u 24h, definitivni rad nakon 4–6 mjeseci.",
+    tag: "Kompleksna protetika",
+    icon: `<path d="M6 18 Q22 36 38 18" stroke-linecap="round"/><path d="M12 22 V14 M20 26 V18 M24 26 V18 M32 22 V14"/><circle cx="12" cy="13" r="1.4" fill="currentColor" stroke="none"/><circle cx="20" cy="17" r="1.4" fill="currentColor" stroke="none"/><circle cx="24" cy="17" r="1.4" fill="currentColor" stroke="none"/><circle cx="32" cy="13" r="1.4" fill="currentColor" stroke="none"/>`
+  },
+  {
+    num: "04",
+    title: "3Shape TRIOS 6",
+    desc: "Najnoviji intraoralni skener za bezbolno digitalno skeniranje bez otisaka. Ekstremna preciznost i brža izrada protetskih radova.",
+    tag: "Digitalna stomatologija",
+    icon: `<rect x="6" y="20" width="20" height="7" rx="2"/><path d="M26 20 L36 15 V32 L26 27 Z" stroke-linejoin="round"/><path d="M10 16 V13 M14 15 V11 M18 16 V13" stroke-linecap="round" opacity=".7"/><circle cx="11" cy="23.5" r=".9" fill="currentColor" stroke="none"/>`
+  }
+];
+---
+
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <p class="section-label reveal">Naše usluge</p>
+      <h2 class="section-title reveal">Sve što vam je <em>potrebno</em></h2>
+      <p class="section-body reveal">Kompletna stomatološka briga — od estetike do oralne hirurgije — pod jednim krovom.</p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((service, index) => (
+        <div class={`service-card reveal reveal-delay-${index}`}>
+          <div class="service-num">{service.num}</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 44 44" set:html={service.icon}></svg>
+          </div>
+          <h3 class="service-title">{service.title}</h3>
+          <p class="service-desc">{service.desc}</p>
+          <span class="service-tag">{service.tag}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  #services {
+    padding: 10rem 0;
+    background: var(--dark2);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .services-header .section-label {
+    justify-content: center;
+  }
+
+  .services-header .section-body {
+    margin-top: 1.2rem;
+    max-width: 560px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(201, 169, 110, 0.1);
+    border: 1px solid rgba(201, 169, 110, 0.1);
+  }
+
+  .service-card {
+    background: var(--dark2);
+    padding: 4rem 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .service-card .service-tag {
+    margin-top: auto;
+  }
+
+  .service-card:hover {
+    background: var(--dark3);
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--gold);
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .service-card:hover::after {
+    width: 100%;
+  }
+
+  .service-num {
+    font-family: var(--serif);
+    font-size: 4rem;
+    font-weight: 300;
+    color: rgba(201, 169, 110, 0.08);
+    line-height: 1;
+    margin-bottom: 2rem;
+    transition: color 0.4s ease;
+  }
+
+  .service-card:hover .service-num {
+    color: rgba(201, 169, 110, 0.15);
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 2rem;
+    color: var(--gold);
+  }
+
+  .service-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.2;
+  }
+
+  .service-title {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+  }
+
+  .service-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .service-tag {
+    display: inline-block;
+    font-size: .65rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.3);
+    padding-bottom: .2rem;
+  }
+
+  @media (max-width: 1100px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .services-header {
+      margin-bottom: 4rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .services-header {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    .service-card {
+      padding: 2.5rem 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,257 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="bs">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="MEDEA CLINIC – Moderna Stomatološka Klinika | Ilidža. Vrhunska stručnost, najnovija tehnologija i maksimalni komfor." />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#0A0A0A" />
+		<meta name="robots" content="index, follow" />
+		<link rel="icon" type="image/png" href="/images/medea%20logo.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		<!-- Open Graph / social share -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content="Moderna Stomatološka Klinika na Ilidži – Hollywood Smile, implantati, 3Shape TRIOS 6." />
+		<meta property="og:image" content="/images/medea%20clinic-hero%20slika.jpg" />
+		<meta property="og:locale" content="bs_BA" />
+		<meta name="twitter:card" content="summary_large_image" />
+
+		<!-- Structured data: Dentist / LocalBusiness -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Dentist",
+			"name": "Medea Clinic",
+			"image": "/images/medea%20clinic-hero%20slika.jpg",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "Butmirska cesta 31A",
+				"addressLocality": "Ilidža",
+				"addressCountry": "BA"
+			},
+			"telephone": "+387 61 828 888",
+			"sameAs": [
+				"https://www.instagram.com/medea_clinic_dentistry",
+				"https://www.facebook.com/profile.php?id=61579724626132"
+			]
+		})} />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preload" as="image" href="/images/medea%20clinic-hero%20slika.jpg" fetchpriority="high">
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<a href="#about" class="skip-link">Preskoči na sadržaj</a>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--gold: #C9A96E;
+		--gold-light: #E8D5A3;
+		--gold-dark: #8B6B3D;
+		--black: #0A0A0A;
+		--dark: #111111;
+		--dark2: #1A1A1A;
+		--dark3: #242424;
+		--dark4: #2E2E2E;
+		--white: #FAFAF8;
+		--text-muted: #888880;
+		--serif: 'Cormorant Garamond', Georgia, serif;
+		--sans: 'Jost', sans-serif;
+	}
+
+	*, *::before, *::after {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		font-size: 17px;
+	}
+
+	body {
+		background: var(--dark);
+		color: var(--white);
+		font-family: var(--sans);
+		font-weight: 300;
+		line-height: 1.7;
+		overflow-x: hidden;
+	}
+
+	/* Common Styles */
+	.section-label {
+		font-size: .68rem;
+		letter-spacing: .24em;
+		text-transform: uppercase;
+		color: var(--gold);
+		margin-bottom: 1rem;
+		display: flex;
+		align-items: center;
+		gap: .8rem;
+	}
+
+	.section-label::before {
+		content: '';
+		display: block;
+		width: 28px;
+		height: 0.5px;
+		background: var(--gold);
+	}
+
+	.section-title {
+		font-family: var(--serif);
+		font-size: clamp(2.2rem, 4vw, 3.5rem);
+		font-weight: 300;
+		line-height: 1.15;
+		color: var(--white);
+		margin-bottom: 1.4rem;
+	}
+
+	.section-title em {
+		font-style: italic;
+		color: var(--gold);
+	}
+
+	.section-body {
+		font-size: 1.05rem;
+		color: var(--text-muted);
+		max-width: 560px;
+		line-height: 1.85;
+	}
+
+	.divider {
+		width: 40px;
+		height: 0.5px;
+		background: var(--gold-dark);
+		margin: 2rem 0;
+	}
+
+	.btn-primary {
+		display: inline-block;
+		font-size: .78rem;
+		letter-spacing: .16em;
+		text-transform: uppercase;
+		padding: .9rem 2.4rem;
+		background: var(--gold);
+		color: var(--black);
+		text-decoration: none;
+		font-weight: 500;
+		transition: background .3s, transform .2s;
+	}
+
+	.btn-primary:hover {
+		background: var(--gold-light);
+		transform: translateY(-1px);
+	}
+
+	.btn-outline {
+		display: inline-block;
+		font-size: .78rem;
+		letter-spacing: .16em;
+		text-transform: uppercase;
+		padding: .9rem 2.4rem;
+		border: 0.5px solid rgba(255,255,255,.25);
+		color: var(--white);
+		text-decoration: none;
+		font-weight: 400;
+		transition: border-color .3s, color .3s;
+	}
+
+	.btn-outline:hover {
+		border-color: var(--gold);
+		color: var(--gold);
+	}
+
+	/* Animations */
+	.reveal {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: opacity .8s ease, transform .8s ease;
+	}
+
+	.reveal.visible {
+		opacity: 1;
+		transform: none;
+	}
+
+	.reveal-delay-1 { transition-delay: .1s; }
+	.reveal-delay-2 { transition-delay: .2s; }
+	.reveal-delay-3 { transition-delay: .3s; }
+	.reveal-delay-4 { transition-delay: .4s; }
+
+	/* Picture element — invisible wrapper, img inherits all layout */
+	picture {
+		display: contents;
+	}
+
+	/* Skip navigation link */
+	.skip-link {
+		position: absolute;
+		top: -100%;
+		left: 1rem;
+		padding: 0.5rem 1rem;
+		background: var(--gold);
+		color: var(--black);
+		font-size: .8rem;
+		letter-spacing: .1em;
+		text-decoration: none;
+		z-index: 9999;
+		transition: top .2s;
+	}
+
+	.skip-link:focus {
+		top: 1rem;
+	}
+
+	/* Focus visible */
+	:focus-visible {
+		outline: 2px solid var(--gold);
+		outline-offset: 3px;
+	}
+
+	/* Global responsive section padding */
+	@media (max-width: 900px) {
+		section:not(#hero) {
+			padding-top: 6rem !important;
+			padding-bottom: 6rem !important;
+		}
+	}
+
+	@media (max-width: 600px) {
+		html {
+			font-size: 16px;
+		}
+		section:not(#hero) {
+			padding-top: 4rem !important;
+			padding-bottom: 4rem !important;
+		}
+	}
+</style>
+<script>
+	const observerOptions = {
+		threshold: 0.1
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+			}
+		});
+	}, observerOptions);
+
+	document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
