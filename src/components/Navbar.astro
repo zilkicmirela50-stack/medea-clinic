@@ -8,12 +8,6 @@ const { lang = 'bs' as Lang } = Astro.props;
       <img src="/images/medea%20logo.png" alt="Medea Clinic Logo" class="logo-img" />
     </a>
 
-    <div class="lang-switch">
-      <a href="/" class:list={[{ active: lang === 'bs' }]}>BS</a>
-      <a href="/en/" class:list={[{ active: lang === 'en' }]}>EN</a>
-      <a href="/de/" class:list={[{ active: lang === 'de' }]}>DE</a>
-    </div>
-
     <button class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
       <span></span>
       <span></span>
@@ -28,6 +22,11 @@ const { lang = 'bs' as Lang } = Astro.props;
     </ul>
 
     <a href="#contact" class="nav-cta">{t(lang, 'nav.cta')}</a>
+
+    <div class="lang-switch">
+      <a href="/en/" class:list={[{ active: lang === 'en' }]}>EN</a>
+      <a href="/de/" class:list={[{ active: lang === 'de' }]}>DE</a>
+    </div>
   </div>
 </nav>
 
