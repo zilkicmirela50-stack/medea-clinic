@@ -1,37 +1,24 @@
 ---
+import { t, type Lang } from '../i18n/translations';
+const { lang = 'bs' as Lang } = Astro.props;
 const toWebp = (src: string) => src.replace(/\.(jpg|jpeg|JPG)$/, '.webp');
-const team = [
-  {
-    name: "Dr. Emina Vuić",
-    role: "Doktorica dentalne medicine",
-    bio: '"Strpljenje, posvećenost i osjećaj za detalje čine temelj svakog njenog rada. Svaki osmijeh koji stvori nosi potpis pažnje i elegancije."',
-    img: "/images/emina.jpg"
-  },
-  {
-    name: "Dr. Edis Vuić",
-    role: "Doktor dentalne medicine",
-    bio: '"Vjeruje da svaki pacijent zaslužuje individualan pristup, vrhunsku estetiku i potpunu udobnost. Savršen osmijeh je naš standard."',
-    img: "/images/edis.jpg"
-  },
-  {
-    name: "Dr. Dino Ćenanović",
-    role: "Doktor dentalne medicine",
-    bio: '"Temelji savremene stomatologije su estetika i preciznost. Individualan pristup i dugoročno oralno zdravlje pacijenta su u fokusu."',
-    img: "/images/dino.jpg"
-  }
+const teamData = [
+  { name: "Dr. Emina Vuić", key: "emina", img: "/images/emina.jpg" },
+  { name: "Dr. Edis Vuić", key: "edis", img: "/images/edis.jpg" },
+  { name: "Dr. Dino Ćenanović", key: "dino", img: "/images/dino.jpg" },
 ];
 ---
 
 <section id="team">
   <div class="container">
     <div class="team-header">
-      <p class="section-label reveal">Naš tim</p>
-      <h2 class="section-title reveal">Upoznajte <em>doktore</em></h2>
-      <p class="team-subtitle reveal">Svaki pacijent zaslužuje individualan pristup, vrhunsku estetiku i potpunu udobnost.</p>
+      <p class="section-label reveal">{t(lang, 'team.label')}</p>
+      <h2 class="section-title reveal">{t(lang, 'team.title')} <em>{t(lang, 'team.titleEm')}</em></h2>
+      <p class="team-subtitle reveal">{t(lang, 'team.subtitle')}</p>
     </div>
 
     <div class="team-grid">
-      {team.map((member, index) => (
+      {teamData.map((member, index) => (
         <div class={`team-card reveal reveal-delay-${index}`}>
           <div class="image-container">
             <picture>
@@ -42,9 +29,9 @@ const team = [
           </div>
           <div class="team-info">
             <h3 class="team-name">{member.name}</h3>
-            <p class="team-role">{member.role}</p>
+            <p class="team-role">{t(lang, `team.roles.${member.key}`)}</p>
             <div class="team-bio-wrapper">
-              <p class="team-bio">{member.bio}</p>
+              <p class="team-bio">{t(lang, `team.bios.${member.key}`)}</p>
             </div>
           </div>
         </div>

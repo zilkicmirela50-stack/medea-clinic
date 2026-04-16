@@ -1,25 +1,33 @@
 ---
+import { t, type Lang } from '../i18n/translations';
+const { lang = 'bs' as Lang } = Astro.props;
 ---
 <nav id="navbar" aria-label="Primarna navigacija">
   <div class="nav-container">
     <a href="#hero" class="nav-logo">
       <img src="/images/medea%20logo.png" alt="Medea Clinic Logo" class="logo-img" />
     </a>
-    
+
+    <div class="lang-switch">
+      <a href="/" class:list={[{ active: lang === 'bs' }]}>BS</a>
+      <a href="/en/" class:list={[{ active: lang === 'en' }]}>EN</a>
+      <a href="/de/" class:list={[{ active: lang === 'de' }]}>DE</a>
+    </div>
+
     <button class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
       <span></span>
       <span></span>
     </button>
 
     <ul class="nav-links">
-      <li><a href="#about">O nama</a></li>
-      <li><a href="#services">Usluge</a></li>
-      <li><a href="#team">Tim</a></li>
-      <li><a href="#contact">Kontakt</a></li>
-      <li class="mobile-only"><a href="#contact" class="nav-cta-mobile">Zakaži termin</a></li>
+      <li><a href="#about">{t(lang, 'nav.about')}</a></li>
+      <li><a href="#services">{t(lang, 'nav.services')}</a></li>
+      <li><a href="#team">{t(lang, 'nav.team')}</a></li>
+      <li><a href="#contact">{t(lang, 'nav.contact')}</a></li>
+      <li class="mobile-only"><a href="#contact" class="nav-cta-mobile">{t(lang, 'nav.cta')}</a></li>
     </ul>
 
-    <a href="#contact" class="nav-cta">Zakaži termin</a>
+    <a href="#contact" class="nav-cta">{t(lang, 'nav.cta')}</a>
   </div>
 </nav>
 
@@ -116,6 +124,26 @@
     background: var(--gold);
     color: var(--black);
     box-shadow: 0 0 20px rgba(201, 169, 110, 0.2);
+  }
+
+  .lang-switch {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+  }
+
+  .lang-switch a {
+    font-size: .65rem;
+    letter-spacing: .1em;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color .3s ease;
+    padding: .2rem .3rem;
+  }
+
+  .lang-switch a:hover,
+  .lang-switch a.active {
+    color: var(--gold);
   }
 
   .mobile-menu-toggle {

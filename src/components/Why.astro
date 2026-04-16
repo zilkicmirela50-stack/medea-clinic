@@ -1,4 +1,7 @@
 ---
+import { t, type Lang } from '../i18n/translations';
+const { lang = 'bs' as Lang } = Astro.props;
+const reasonsTranslated = t(lang, 'why.reasons') as { title: string; desc: string }[];
 const reasons = [
   {
     title: "Doživotna garancija",
@@ -61,10 +64,10 @@ const reasons = [
   <div class="container">
     <div class="why-header">
       <div class="reveal">
-        <span class="section-label">Zašto mi</span>
-        <h2 class="section-title">Vaš osmijeh <em>naša je strast</em></h2>
+        <span class="section-label">{t(lang, 'why.label')}</span>
+        <h2 class="section-title">{t(lang, 'why.title')} <em>{t(lang, 'why.titleEm')}</em></h2>
         <p class="section-desc">
-          Specijalizovani smo za kompleksne slučajeve — tamo gdje drugi staju, MEDEA CLINIC stvara Hollywood osmijeh. Dokazana stručnost i vrhunska tehnologija čine nas prvim izborom na Ilidži.
+          {t(lang, 'why.desc')}
         </p>
       </div>
     </div>
@@ -76,15 +79,15 @@ const reasons = [
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" set:html={reason.icon}></svg>
           </div>
           <div class="why-card-text">
-            <h3 class="why-card-title">{reason.title}</h3>
-            <p class="why-card-desc">{reason.desc}</p>
+            <h3 class="why-card-title">{reasonsTranslated[index].title}</h3>
+            <p class="why-card-desc">{reasonsTranslated[index].desc}</p>
           </div>
         </div>
       ))}
     </div>
 
     <div class="why-footer reveal">
-      <a href="#contact" class="btn-primary">Rezerviši termin</a>
+      <a href="#contact" class="btn-primary">{t(lang, 'why.cta')}</a>
     </div>
   </div>
 </section>

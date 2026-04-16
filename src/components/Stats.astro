@@ -1,22 +1,24 @@
 ---
+import { t, type Lang } from '../i18n/translations';
+const { lang = 'bs' as Lang } = Astro.props;
 ---
 <div id="stats">
   <div class="stats-grid">
     <div class="reveal">
       <div class="stat-num">4</div>
-      <div class="stat-label">Savremene ordinacije</div>
+      <div class="stat-label">{t(lang, 'stats.s1')}</div>
     </div>
     <div class="reveal reveal-delay-1">
       <div class="stat-num">3Shape</div>
-      <div class="stat-label">TRIOS 6 Skener</div>
+      <div class="stat-label">{t(lang, 'stats.s2')}</div>
     </div>
     <div class="reveal reveal-delay-2">
       <div class="stat-num">24h</div>
-      <div class="stat-label">Implantati · brzo</div>
+      <div class="stat-label">{t(lang, 'stats.s3')}</div>
     </div>
     <div class="reveal reveal-delay-3">
       <div class="stat-num">∞</div>
-      <div class="stat-label">Doživotna garancija</div>
+      <div class="stat-label">{t(lang, 'stats.s4')}</div>
     </div>
   </div>
 </div>

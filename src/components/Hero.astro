@@ -1,4 +1,6 @@
 ---
+import { t, type Lang } from '../i18n/translations';
+const { lang = 'bs' as Lang } = Astro.props;
 ---
 <section id="hero">
   <!-- Video background (desktop only) -->
@@ -18,26 +20,26 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
-  
+
   <div class="hero-content">
     <div class="reveal">
-      <span class="hero-tag">Moderna Stomatološka Klinika · Ilidža</span>
+      <span class="hero-tag">{t(lang, 'hero.tag')}</span>
     </div>
     <h1 class="hero-title reveal">
       MEDEA<br><em>CLINIC</em>
     </h1>
     <p class="hero-subtitle reveal reveal-delay-1">
-      Vrhunska stručnost · Najnovija tehnologija · Maksimalni komfor
+      {t(lang, 'hero.subtitle')}
     </p>
     <div class="hero-actions reveal reveal-delay-2">
-      <a href="#contact" class="btn-primary">Besplatne konsultacije</a>
-      <a href="#services" class="btn-outline">Naše usluge</a>
+      <a href="#contact" class="btn-primary">{t(lang, 'hero.btn1')}</a>
+      <a href="#services" class="btn-outline">{t(lang, 'hero.btn2')}</a>
     </div>
   </div>
 
   <div class="hero-scroll">
     <div class="scroll-line"></div>
-    <span>Scroll</span>
+    <span>{t(lang, 'hero.scroll')}</span>
   </div>
 </section>
 

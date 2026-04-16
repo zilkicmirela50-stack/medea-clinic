@@ -1,4 +1,6 @@
 ---
+import { t, type Lang } from '../i18n/translations';
+const { lang = 'bs' as Lang } = Astro.props;
 ---
 <section id="about">
   <div class="container">
@@ -13,27 +15,27 @@
         </div>
         <div class="about-badge">
           <strong>No.1</strong>
-          <span>Hollywood Smile<br>Specijalisti</span>
+          <span set:html={t(lang, 'about.badge').replace('\n', '<br>')}></span>
         </div>
       </div>
 
       <div class="about-content">
         <div class="reveal">
-          <p class="section-label">O klinici</p>
-          <h2 class="section-title">Dobrodošli u<br><em>MEDEA CLINIC</em></h2>
+          <p class="section-label">{t(lang, 'about.label')}</p>
+          <h2 class="section-title">{t(lang, 'about.title')}<br><em>{t(lang, 'about.titleEm')}</em></h2>
         </div>
-        
+
         <div class="divider reveal"></div>
-        
+
         <p class="section-body reveal reveal-delay-1">
-          Moderna stomatološka klinika gdje se vrhunska stručnost susreće sa najnovijom tehnologijom i maksimalnim komforom za svakog pacijenta. Na raspolaganju su vam 4 savremeno opremljene ordinacije, dizajnirane po najvišim standardima.
+          {t(lang, 'about.body')}
         </p>
 
         <ul class="check-list reveal reveal-delay-2">
-          <li>4 savremeno opremljene ordinacije po najvišim standardima</li>
-          <li>Specijalizovani za kompleksne estetske i protetske zahvate</li>
-          <li>Besplatne konsultacije za svaki zahvat</li>
-          <li>Tamo gdje drugi staju — MEDEA CLINIC stvara Hollywood osmijeh</li>
+          <li>{t(lang, 'about.check1')}</li>
+          <li>{t(lang, 'about.check2')}</li>
+          <li>{t(lang, 'about.check3')}</li>
+          <li>{t(lang, 'about.check4')}</li>
         </ul>
 
         <div class="about-actions reveal reveal-delay-3">

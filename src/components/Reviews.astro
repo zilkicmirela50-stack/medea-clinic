@@ -1,51 +1,16 @@
 ---
-const reviews = [
-  {
-    name: "Amina K.",
-    date: "januar 2025",
-    rating: 5,
-    text: "Nevjerovatno iskustvo od prvog pregleda do kraja. Tim je profesionalan, ljubazan i pažljiv. Hollywood Smile je ispao savršeno — iznad svih očekivanja!"
-  },
-  {
-    name: "Mirza H.",
-    date: "februar 2025",
-    rating: 5,
-    text: "Ugradnja implantata bez bola i stresa. Dr. Vuić je objasnio svaki korak zahvata. Rezultat je fantastičan, preporučujem svima bez rezerve."
-  },
-  {
-    name: "Selma B.",
-    date: "mart 2025",
-    rating: 5,
-    text: "Konačno klinika kojoj možete vjerovati. All-on-4 proteza je gotova u jednom danu, a privremeni rad izgleda bolje nego što sam zamislila."
-  },
-  {
-    name: "Edin P.",
-    date: "mart 2025",
-    rating: 5,
-    text: "Moderan prostor, vrhunska oprema i tim koji zaista brine o pacijentima. 3Shape skener bez otisaka — nešto što nisam iskusio nigdje drugdje na Ilidži."
-  },
-  {
-    name: "Lejla M.",
-    date: "april 2025",
-    rating: 5,
-    text: "Odlična klinika! Besplatne konsultacije, transparentne cijene i rezultat koji govori za sebe. Nikad nisam bila sigurnija u vlastiti osmijeh."
-  },
-  {
-    name: "Damir Č.",
-    date: "april 2025",
-    rating: 5,
-    text: "Brzo, bezbolno i profesionalno. Osoblje je uvijek dostupno za sva pitanja. Definitivno ću preporučiti Medea Clinic svim prijateljima i porodici."
-  }
-];
+import { t, type Lang } from '../i18n/translations';
+const { lang = 'bs' as Lang } = Astro.props;
+const reviews = t(lang, 'reviews.items') as { name: string; date: string; text: string }[];
 ---
 
 <section id="reviews" class="reviews-section">
   <div class="reviews-bg"></div>
   <div class="container">
     <div class="reviews-header reveal">
-      <span class="section-label">Google recenzije</span>
+      <span class="section-label">{t(lang, 'reviews.label')}</span>
       <div class="reviews-title-row">
-        <h2 class="section-title">Šta kažu naši <em>pacijenti</em></h2>
+        <h2 class="section-title">{t(lang, 'reviews.title')} <em>{t(lang, 'reviews.titleEm')}</em></h2>
         <div class="google-badge">
           <svg class="google-icon" viewBox="0 0 48 48">
             <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.9 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 7.9 2.9l5.7-5.7C34.1 6.8 29.3 5 24 5 13 5 4 14 4 25s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
@@ -56,7 +21,7 @@ const reviews = [
           <div class="badge-info">
             <span class="badge-score">5.0</span>
             <div class="badge-stars">★★★★★</div>
-            <span class="badge-label">Google ocjena</span>
+            <span class="badge-label">{t(lang, 'reviews.googleRating')}</span>
           </div>
         </div>
       </div>
@@ -86,7 +51,7 @@ const reviews = [
               <p class="review-text">"{review.text}"</p>
               <div class="review-verified">
                 <svg viewBox="0 0 16 16" fill="currentColor" width="12" height="12"><path d="M8 0l2 5.5h5.5l-4.5 3.3 1.7 5.2L8 11 3.3 14 5 8.8.5 5.5H6z"/></svg>
-                Potvrđena recenzija
+                {t(lang, 'reviews.verified')}
               </div>
             </div>
           </div>

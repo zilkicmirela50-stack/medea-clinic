@@ -1,23 +1,25 @@
 ---
+import { t, type Lang } from '../i18n/translations';
+const { lang = 'bs' as Lang } = Astro.props;
 const toWebp = (src: string) => src.replace(/\.(jpg|jpeg|JPG)$/, '.webp');
-// Results data
+const labels = t(lang, 'results.labels') as string[];
 const results = [
-  { prije: "/images/prije-1.jpg", poslije: "/images/poslije-1.jpg", label: "Estetska rehabilitacija" },
-  { prije: "/images/prije-2.jpg", poslije: "/images/poslije-2.jpg", label: "Digital Smile Design" },
-  { prije: "/images/prije-3.jpg", poslije: "/images/poslije-3.jpg", label: "Keramičke krune" },
-  { prije: "/images/prije-4.jpg", poslije: "/images/poslije-4.jpg", label: "Totalna transformacija" },
-  { prije: "/images/prije-5.jpg", poslije: "/images/poslije-5.jpg", label: "Hollywood Smile" }
+  { prije: "/images/prije-1.jpg", poslije: "/images/poslije-1.jpg" },
+  { prije: "/images/prije-2.jpg", poslije: "/images/poslije-2.jpg" },
+  { prije: "/images/prije-3.jpg", poslije: "/images/poslije-3.jpg" },
+  { prije: "/images/prije-4.jpg", poslije: "/images/poslije-4.jpg" },
+  { prije: "/images/prije-5.jpg", poslije: "/images/poslije-5.jpg" }
 ];
 ---
 
 <section id="results" class="results-section">
   <div class="luxury-bg"></div>
-  
+
   <div class="container">
     <div class="results-header">
       <div class="reveal">
-        <span class="section-label">Prije i poslije</span>
-        <h2 class="section-title">Naši <em>rezultati</em></h2>
+        <span class="section-label">{t(lang, 'results.label')}</span>
+        <h2 class="section-title">{t(lang, 'results.title')} <em>{t(lang, 'results.titleEm')}</em></h2>
       </div>
     </div>
 
@@ -28,21 +30,21 @@ const results = [
             <div class="swiper-slide">
               <div class="ba-premium-container">
                 <div class="ba-view" data-ba-view>
-                  
+
                   <div class="ba-layer layer-before">
                     <picture>
                       <source srcset={toWebp(item.prije)} type="image/webp" />
-                      <img src={item.prije} alt="Prije" />
+                      <img src={item.prije} alt={t(lang, 'results.before')} />
                     </picture>
-                    <div class="ba-tag t-before">PRIJE</div>
+                    <div class="ba-tag t-before">{t(lang, 'results.before')}</div>
                   </div>
 
                   <div class="ba-layer layer-after" data-after-side>
                     <picture>
                       <source srcset={toWebp(item.poslije)} type="image/webp" />
-                      <img src={item.poslije} alt="Poslije" />
+                      <img src={item.poslije} alt={t(lang, 'results.after')} />
                     </picture>
-                    <div class="ba-tag t-after">POSLIJE</div>
+                    <div class="ba-tag t-after">{t(lang, 'results.after')}</div>
                   </div>
 
                   <div class="ba-handle" data-handle>
@@ -58,8 +60,8 @@ const results = [
                 </div>
 
                 <div class="ba-details">
-                  <span class="ba-title">{item.label}</span>
-                  <div class="ba-case-counter">PRIMJER {index + 1} OD 5</div>
+                  <span class="ba-title">{labels[index]}</span>
+                  <div class="ba-case-counter">{t(lang, 'results.caseOf')} {index + 1} {t(lang, 'results.of')} 5</div>
                 </div>
               </div>
             </div>

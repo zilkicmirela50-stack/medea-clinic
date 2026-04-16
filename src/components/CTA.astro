@@ -1,13 +1,15 @@
 ---
+import { t, type Lang } from '../i18n/translations';
+const { lang = 'bs' as Lang } = Astro.props;
 ---
 <section id="cta">
   <div class="cta-bg"></div>
   <div class="cta-content container">
-    <h2 class="cta-title reveal">Spremni za<br><em>novi početak?</em></h2>
-    <p class="cta-sub reveal reveal-delay-1">Zakažite termin za besplatne konsultacije već danas</p>
+    <h2 class="cta-title reveal">{t(lang, 'cta.title')}<br><em>{t(lang, 'cta.titleEm')}</em></h2>
+    <p class="cta-sub reveal reveal-delay-1">{t(lang, 'cta.subtitle')}</p>
     <div class="cta-actions reveal reveal-delay-2">
-      <a href="tel:061828888" class="btn-primary">Pozovite: 061 828 888</a>
-      <a href="#contact" class="btn-outline">Pošaljite poruku</a>
+      <a href="tel:061828888" class="btn-primary">{t(lang, 'cta.btn1')}</a>
+      <a href="#contact" class="btn-outline">{t(lang, 'cta.btn2')}</a>
     </div>
   </div>
 </section>

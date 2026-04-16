@@ -1,4 +1,6 @@
 ---
+import { t, type Lang } from '../i18n/translations';
+const { lang = 'bs' as Lang } = Astro.props;
 const toWebp = (src: string) => src.replace(/\.(jpg|jpeg|JPG)$/, '.webp');
 const clients = {
   main: "/images/client-main.jpg",
@@ -19,8 +21,8 @@ const clients = {
   <div class="container">
     <div class="clients-header">
       <div class="reveal">
-        <span class="section-label">Povjerenje pacijenata</span>
-        <h2 class="section-title">Zadovoljni <em>klijenti</em></h2>
+        <span class="section-label">{t(lang, 'clients.label')}</span>
+        <h2 class="section-title">{t(lang, 'clients.title')} <em>{t(lang, 'clients.titleEm')}</em></h2>
         <div class="rating-bar">
           <div class="stars" aria-label="5 od 5 zvjezdica">
             <svg viewBox="0 0 20 20"><path d="M10 1.5l2.47 5.1 5.63.82-4.07 3.97.96 5.61L10 14.38l-5 2.62.96-5.61L1.9 7.42l5.63-.82L10 1.5z"/></svg>
@@ -29,7 +31,7 @@ const clients = {
             <svg viewBox="0 0 20 20"><path d="M10 1.5l2.47 5.1 5.63.82-4.07 3.97.96 5.61L10 14.38l-5 2.62.96-5.61L1.9 7.42l5.63-.82L10 1.5z"/></svg>
             <svg viewBox="0 0 20 20"><path d="M10 1.5l2.47 5.1 5.63.82-4.07 3.97.96 5.61L10 14.38l-5 2.62.96-5.61L1.9 7.42l5.63-.82L10 1.5z"/></svg>
           </div>
-          <span class="rating-text"><strong>5.0</strong> · Ocjena naših pacijenata</span>
+          <span class="rating-text"><strong>5.0</strong> · {t(lang, 'clients.ratingText')}</span>
         </div>
       </div>
     </div>
@@ -47,7 +49,7 @@ const clients = {
         <div class="corner br"></div>
         <figcaption class="tile-caption">
           <div class="mini-stars">★★★★★</div>
-          <p>"Kvalitet i pristup na najvišem nivou. Nevjerovatno iskustvo od prvog pregleda."</p>
+          <p>{t(lang, 'clients.caption')}</p>
         </figcaption>
       </figure>
 
@@ -75,10 +77,9 @@ const clients = {
         <svg class="quote-mark" viewBox="0 0 40 40" fill="currentColor">
           <path d="M12 10c-4 0-7 3-7 7s3 7 7 7v4c-7 0-13-5-13-13S5 2 12 2v8zm20 0c-4 0-7 3-7 7s3 7 7 7v4c-7 0-13-5-13-13s6-13 13-13v8z"/>
         </svg>
-        <blockquote>
-          Medea Clinic je premašila sva moja očekivanja. Tim je <em>profesionalan, pažljiv</em> i rezultat je savršen.
+        <blockquote set:html={t(lang, 'clients.testimonial')}>
         </blockquote>
-        <div class="testimonial-author">Pacijent · Ilidža</div>
+        <div class="testimonial-author">{t(lang, 'clients.testimonialAuthor')}</div>
       </figure>
 
       <figure class="tile">

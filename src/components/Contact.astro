@@ -1,15 +1,18 @@
 ---
+import { t, type Lang } from '../i18n/translations';
+const { lang = 'bs' as Lang } = Astro.props;
+const serviceOptions = t(lang, 'contact.serviceOptions') as string[];
 ---
-<section id="contact">
+<section id="contact" data-lang={lang}>
   <div class="container">
     <div class="contact-header">
-      <p class="section-label reveal">Kontakt</p>
-      <h2 class="section-title reveal">Pronađite <em>nas</em></h2>
+      <p class="section-label reveal">{t(lang, 'contact.label')}</p>
+      <h2 class="section-title reveal">{t(lang, 'contact.title')} <em>{t(lang, 'contact.titleEm')}</em></h2>
     </div>
     <div class="contact-grid">
       <div class="contact-info">
         <p class="contact-intro reveal">
-          Naš tim vam stoji na raspolaganju za sve upite, besplatne konsultacije i zakazivanje termina. Javite nam se putem telefona, poruke ili nas posjetite u našoj klinici na Ilidži.
+          {t(lang, 'contact.intro')}
         </p>
         <div class="info-items">
           <div class="info-item reveal reveal-delay-1">
@@ -19,7 +22,7 @@
               </svg>
             </div>
             <div class="text">
-              <p class="label">Telefon</p>
+              <p class="label">{t(lang, 'contact.phone')}</p>
               <a href="tel:061828888" class="value">061 828 888</a>
             </div>
           </div>
@@ -32,8 +35,8 @@
               </svg>
             </div>
             <div class="text">
-              <p class="label">Adresa</p>
-              <p class="value">Butmirska cesta 31A, Ilidža</p>
+              <p class="label">{t(lang, 'contact.address')}</p>
+              <p class="value">{t(lang, 'contact.addressValue')}</p>
             </div>
           </div>
 
@@ -46,7 +49,7 @@
               </svg>
             </div>
             <div class="text">
-              <p class="label">Instagram</p>
+              <p class="label">{t(lang, 'contact.instagram')}</p>
               <a href="https://www.instagram.com/medea_clinic_dentistry" target="_blank" class="value">@medea_clinic</a>
             </div>
           </div>
@@ -58,7 +61,7 @@
               </svg>
             </div>
             <div class="text">
-              <p class="label">Facebook</p>
+              <p class="label">{t(lang, 'contact.facebook')}</p>
               <a href="https://www.facebook.com/profile.php?id=61579724626132" target="_blank" class="value">Medea Clinic</a>
             </div>
           </div>
@@ -83,29 +86,27 @@
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
             <div class="form-group">
-              <label for="name">Ime i Prezime</label>
-              <input type="text" id="name" name="name" placeholder="Vaše ime" required />
+              <label for="name">{t(lang, 'contact.formName')}</label>
+              <input type="text" id="name" name="name" placeholder={t(lang, 'contact.formNamePh')} required />
             </div>
             <div class="form-group">
-              <label for="phone">Telefon</label>
-              <input type="tel" id="phone" name="phone" placeholder="Vaš broj" required />
+              <label for="phone">{t(lang, 'contact.formPhone')}</label>
+              <input type="tel" id="phone" name="phone" placeholder={t(lang, 'contact.formPhonePh')} required />
             </div>
           </div>
           <div class="form-group">
-            <label for="service">Usluga</label>
+            <label for="service">{t(lang, 'contact.formService')}</label>
             <select id="service" name="service">
-              <option value="Hollywood Smile">Hollywood Smile</option>
-              <option value="Dentalni implantati">Dentalni implantati</option>
-              <option value="All-on-4 Proteza">All-on-4 Proteza</option>
-              <option value="3Shape TRIOS 6">3Shape TRIOS 6</option>
-              <option value="Ostalo">Ostalo</option>
+              {serviceOptions.map((opt: string) => (
+                <option value={opt}>{opt}</option>
+              ))}
             </select>
           </div>
           <div class="form-group">
-            <label for="message">Poruka</label>
-            <textarea id="message" name="message" placeholder="Kako vam možemo pomoći?"></textarea>
+            <label for="message">{t(lang, 'contact.formMessage')}</label>
+            <textarea id="message" name="message" placeholder={t(lang, 'contact.formMessagePh')}></textarea>
           </div>
-          <button type="submit" class="btn-primary">Pošalji poruku</button>
+          <button type="submit" class="btn-primary">{t(lang, 'contact.formBtn')}</button>
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -326,9 +327,16 @@
 </style>
 
 <script>
-  // TODO: zamijeniti s pravim endpointom ili mailto kad klijent da e-mail
   const form = document.getElementById('contactForm') as HTMLFormElement | null;
   const status = document.getElementById('formStatus');
+  const section = document.getElementById('contact');
+  const lang = section?.getAttribute('data-lang') || 'bs';
+
+  const msgs: Record<string, { error: string; success: string }> = {
+    bs: { error: 'Molimo unesite ime i broj telefona.', success: 'Hvala! Poruka je zabilježena. Javićemo vam se uskoro.' },
+    en: { error: 'Please enter your name and phone number.', success: 'Thank you! Your message has been recorded. We will contact you soon.' },
+    de: { error: 'Bitte geben Sie Ihren Namen und Ihre Telefonnummer ein.', success: 'Vielen Dank! Ihre Nachricht wurde aufgenommen. Wir werden uns in Kürze bei Ihnen melden.' },
+  };
 
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -338,17 +346,16 @@
     const phone = (form.elements.namedItem('phone') as HTMLInputElement)?.value.trim();
 
     if (!name || !phone) {
-      status.textContent = 'Molimo unesite ime i broj telefona.';
+      status.textContent = msgs[lang]?.error || msgs.bs.error;
       status.classList.add('error');
       return;
     }
 
-    // Privremeno: logujemo podatke i pokazujemo potvrdu. Zamijeniti pravim slanjem.
     const data = Object.fromEntries(new FormData(form).entries());
     console.log('[contact-form]', data);
 
     status.classList.remove('error');
-    status.textContent = 'Hvala! Poruka je zabilježena. Javićemo vam se uskoro.';
+    status.textContent = msgs[lang]?.success || msgs.bs.success;
     form.reset();
   });
 </script>

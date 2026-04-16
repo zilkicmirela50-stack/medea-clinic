@@ -1,4 +1,6 @@
 ---
+import { t, type Lang } from '../i18n/translations';
+const { lang = 'bs' as Lang } = Astro.props;
 ---
 <footer>
   <div class="container">
@@ -17,7 +19,7 @@
     </div>
     
     <div class="footer-bottom">
-      <p class="copyright">&copy; {new Date().getFullYear()} Medea Clinic. Sva prava zadržana.</p>
+      <p class="copyright">&copy; {new Date().getFullYear()} Medea Clinic. {t(lang, 'footer.rights')}</p>
       <div class="footer-credits">
         Design by <a href="https://webstranica.ba" target="_blank">Webstranica.ba</a>
       </div>
