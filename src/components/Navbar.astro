@@ -25,9 +25,15 @@ const { lang = 'bs' as Lang } = Astro.props;
 
     <div class="lang-switch">
       <span class="lang-divider"></span>
-      <a href="/en/" class:list={[{ active: lang === 'en' }]}>EN</a>
-      <span class="lang-sep">|</span>
-      <a href="/de/" class:list={[{ active: lang === 'de' }]}>DE</a>
+      {([
+        { code: 'bs', href: '/', label: 'BS' },
+        { code: 'en', href: '/en/', label: 'EN' },
+        { code: 'de', href: '/de/', label: 'DE' },
+      ] as const)
+        .filter(l => l.code !== lang)
+        .map((l, i) => (
+          <>{i > 0 && <span class="lang-sep">|</span>}<a href={l.href}>{l.label}</a></>
+        ))}
     </div>
   </div>
 </nav>
