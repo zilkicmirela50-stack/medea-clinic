@@ -210,8 +210,19 @@ const { lang = 'bs' as Lang } = Astro.props;
       display: none;
     }
 
+    .lang-switch {
+      margin-left: auto;
+      margin-right: .5rem;
+    }
+
+    .lang-switch a {
+      font-size: .6rem;
+      padding: .25rem .4rem;
+    }
+
     .mobile-menu-toggle {
       display: block;
+      flex-shrink: 0;
     }
 
     .nav-links {
